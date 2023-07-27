@@ -1,0 +1,80 @@
+div.da-restock-alerts-container-v1 {
+  margin-top: 10px;
+  margin-bottom:10px;
+}
+
+div.da-restock-alerts-container-v1 .da-restock-alerts-msg-success-v1,
+div.da-restock-alerts-container-v1 .da-restock-alerts-msg-error-v1 {
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: none;
+}
+
+.da-restock-alerts-container-v1 input,
+.da-restock-alerts-container-v1 select {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.da-restock-alerts-form-button {
+  cursor: pointer;
+  width: 100%;
+}
+
+.da-restock-alerts-container-v1 .da-restock-alerts-checkbox-group {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.da-restock-alerts-container-v1 .da-restock-alerts-checkbox-group input[type='checkbox'] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  background: #d3d3d3;
+  height: 20px;
+  width: 24px;
+  border: 1px solid #fff;
+  padding: 0;
+  margin: 0;
+  margin-right: 5px;
+  vertical-align: bottom;
+  display: inline-block;
+}
+
+.da-restock-alerts-container-v1 .da-restock-alerts-checkbox-group input[type='checkbox']:checked {
+  background: #333;
+}
+
+.da-restock-alerts-container-v1 .da-restock-alerts-checkbox-group input[type='checkbox']:hover {
+  filter: brightness(90%);
+}
+
+.da-restock-alerts-container-v1 .da-restock-alerts-checkbox-group input[type='checkbox']:disabled {
+  background: #e6e6e6;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.da-restock-alerts-container-v1 .da-restock-alerts-checkbox-group input[type='checkbox']:after {
+  content: '';
+  position: relative;
+  left: 40%;
+  top: 20%;
+  width: 15%;
+  height: 40%;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  display: none;
+}
+
+.da-restock-alerts-container-v1 .da-restock-alerts-checkbox-group input[type='checkbox']:checked:after {
+  display: block;
+}
+.da-restock-alerts-container-v1 .da-restock-alerts-checkbox-group input[type='checkbox']:disabled:after {
+  border-color: #7b7b7b;
+}

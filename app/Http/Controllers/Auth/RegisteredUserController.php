@@ -9,7 +9,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rules\Password; // Import lớp Password
 
 class RegisteredUserController extends Controller
 {
@@ -36,13 +36,16 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed', Password::defaults()], // Sử dụng quy tắc mật khẩu mặc định
+            'phone' => ['nullable', 'string', 'max:20'], // Thêm quy tắc validation cho trường 'phone'
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'phone' => $request->phone, 
+            'user_adress' => $request->adress,
         ]);
 
         event(new Registered($user));

@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,27 +17,28 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home');
-});
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
+
 Route::get('/product', function () {
     return view('pages.store');
 });
 
+Route::get('/products',[productController::class,'getAllProducts']);
+Route::get('/testproducts',[CategoryController::class,'getAllCategories']);
+
+
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard_pages.home');
 })->middleware(['checkadmin'])->name('dashboard');
 
-Route::middleware('checkAuth')->group(function () {
-    // Your protected routes go here
-    Route::get('/checkauth', function(){
-        echo "checkAuth";
+
+Route::middleware('checkadmin')->group(function () {
+    Route::get('/dashboard/products', function () {
+        return view('dashboard_pages.products');
     });
-   
-});
-Route::get('/checksession', function () {
-    $user = Auth::user();
-    var_dump($user->name);
 });
 
-require __DIR__.'/auth.php';
+
+require __DIR__ . '/auth.php';

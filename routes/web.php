@@ -19,12 +19,9 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('/shop', [HomeController::class, 'product']);
 
-Route::get('/product', function () {
-    return view('pages.store');
-});
 
-Route::get('/products',[productController::class,'getAllProducts']);
 Route::get('/testproducts',[CategoryController::class,'getAllCategories']);
 
 

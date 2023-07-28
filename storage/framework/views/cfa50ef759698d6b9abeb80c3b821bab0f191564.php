@@ -108,7 +108,7 @@
                     <?php
                         $productImage = '';
                         foreach ($productImages as $imagehot) {
-                            if ($imagehot->product_id == $newProduct->product_id) {
+                            if ($imagehot->id_product == $newProduct->product_id) {
                                 $productImage = $imagehot->link;
                                 break;
                             }

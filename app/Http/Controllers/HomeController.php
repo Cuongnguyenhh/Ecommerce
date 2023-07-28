@@ -35,4 +35,9 @@ class HomeController extends Controller
         $viewData = $this->getViewData($request);
         return view('pages.home', $viewData);
     }
+    public function product(Request $request)
+    {
+        $viewData = $this->getViewData($request);
+        return view('pages.store', $viewData);
+    }
 }

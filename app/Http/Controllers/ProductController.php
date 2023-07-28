@@ -15,7 +15,7 @@ class productController extends Controller
     {
         $allProducts = Product::where('products.visible', 0) // Specify 'products.visible'
             ->join('categories', 'products.category_id', '=', 'categories.id')
-            ->paginate(4);
+            ->paginate(8);
         return $allProducts;
     }
     public function getBestsellersProducts()
@@ -61,7 +61,7 @@ class productController extends Controller
 
     public function getProductimages()
     {
-        $productImages = Images::join('products', 'images.product_id', '=', 'products.product_id')
+        $productImages = Images::join('products', 'images.id_product', '=', 'products.product_id')
             ->get();
         return $productImages;
     }

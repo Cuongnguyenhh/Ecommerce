@@ -40,15 +40,14 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__categories">
                                                 <ul class="nice-scroll">
-                                                    <li><a href="{{ url('/') }}">Men (20)</a></li>
-                                                    <li><a href="{{ url('/') }}">Women (20)</a></li>
-                                                    <li><a href="{{ url('/') }}">Bags (20)</a></li>
-                                                    <li><a href="{{ url('/') }}">Clothing (20)</a></li>
-                                                    <li><a href="{{ url('/') }}">Shoes (20)</a></li>
-                                                    <li><a href="{{ url('/') }}">Accessories (20)</a></li>
-                                                    <li><a href="{{ url('/') }}">Kids (20)</a></li>
-                                                    <li><a href="{{ url('/') }}">Kids (20)</a></li>
-                                                    <li><a href="{{ url('/') }}">Kids (20)</a></li>
+
+                                                    @foreach ($categories as $category)
+                                                        @php  @endphp
+
+                                                        <li><a
+                                                                href="{{ url('category/' . $category->id) }}">{{ $category->category_name }}</a>
+                                                        </li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>

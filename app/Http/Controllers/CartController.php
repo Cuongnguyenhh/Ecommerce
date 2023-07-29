@@ -72,10 +72,11 @@ class CartController extends Controller
         $viewData = $this->getViewData($request, $id = null);
 
         // return redirect()->back()->with('success', 'Đã thêm sản phẩm vào giỏ hàng.');
-        return array_merge(compact('cart'), $viewData);
+        return redirect()->route('shopingcart');
     }
 
-    public  function shopingcart(Request $request, $id = null){
+    public  function shopingcart(Request $request, $id = null)
+    {
         $cart = [];
         $viewData = $this->getViewData($request, $id);
         $cart = session('cart');

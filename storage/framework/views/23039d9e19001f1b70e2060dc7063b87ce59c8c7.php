@@ -39,15 +39,14 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__categories">
                                                 <ul class="nice-scroll">
-                                                    <li><a href="<?php echo e(url('/')); ?>">Men (20)</a></li>
-                                                    <li><a href="<?php echo e(url('/')); ?>">Women (20)</a></li>
-                                                    <li><a href="<?php echo e(url('/')); ?>">Bags (20)</a></li>
-                                                    <li><a href="<?php echo e(url('/')); ?>">Clothing (20)</a></li>
-                                                    <li><a href="<?php echo e(url('/')); ?>">Shoes (20)</a></li>
-                                                    <li><a href="<?php echo e(url('/')); ?>">Accessories (20)</a></li>
-                                                    <li><a href="<?php echo e(url('/')); ?>">Kids (20)</a></li>
-                                                    <li><a href="<?php echo e(url('/')); ?>">Kids (20)</a></li>
-                                                    <li><a href="<?php echo e(url('/')); ?>">Kids (20)</a></li>
+
+                                                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <?php  ?>
+
+                                                        <li><a
+                                                                href="<?php echo e(url('category/' . $category->id)); ?>"><?php echo e($category->category_name); ?></a>
+                                                        </li>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </ul>
                                             </div>
                                         </div>

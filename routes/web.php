@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,14 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::get('/shop', [HomeController::class, 'product']);
 Route::get('/category/{id}', [HomeController::class, 'productbyCate']);
 Route::get('/productdetail', [HomeController::class, 'productDetails']);
+Route::get('/shopingcart', [CartController::class, 'shopingcart'])->name('shopingcart');
+
+
+
+Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+
 
 
 

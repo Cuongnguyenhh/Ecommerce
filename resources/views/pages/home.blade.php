@@ -132,7 +132,7 @@
                             </div>
                             <div class="product__item__text">
                                 <h6>{{ $newProduct->product_name }}</h6>
-                                <a href="{{url('/')}}" class="add-cart">+ Add To Cart</a>
+                       
                                 <div class="rating">
                                     @for ($i = 1; $i <= 5; $i++)
                                         <i class="fa {{ $i <= $index % 2 + 1 ? 'fa-star' : 'fa-star-o' }}"></i>

@@ -88,7 +88,6 @@
                                     </div>
                                     <div class="product__item__text">
                                         <h6><?php echo e($product->product_name); ?></h6>
-                                        <a href="<?php echo e(url('/')); ?>" class="add-cart">+ Add To Cart</a>
                                         <div class="rating">
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>

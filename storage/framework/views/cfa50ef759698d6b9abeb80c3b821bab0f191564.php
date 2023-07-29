@@ -131,7 +131,7 @@
                             </div>
                             <div class="product__item__text">
                                 <h6><?php echo e($newProduct->product_name); ?></h6>
-                                <a href="<?php echo e(url('/')); ?>" class="add-cart">+ Add To Cart</a>
+                       
                                 <div class="rating">
                                     <?php for($i = 1; $i <= 5; $i++): ?>
                                         <i class="fa <?php echo e($i <= $index % 2 + 1 ? 'fa-star' : 'fa-star-o'); ?>"></i>

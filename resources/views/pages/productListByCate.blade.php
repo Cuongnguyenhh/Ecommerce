@@ -215,7 +215,6 @@
                                     </div>
                                     <div class="product__item__text">
                                         <h6>{{ $product->product_name }}</h6>
-                                        <a href="{{ url('/') }}" class="add-cart">+ Add To Cart</a>
                                         <div class="rating">
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>

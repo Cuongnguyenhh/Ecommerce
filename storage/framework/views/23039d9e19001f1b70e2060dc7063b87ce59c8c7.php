@@ -205,7 +205,7 @@
                                         <ul class="product__hover">
                                             <li><a href="<?php echo e(url('/')); ?>"><img src="img/icon/heart.png"
                                                         alt=""></a></li>
-                                            <li><a href="<?php echo e(url('/')); ?>"><img src="img/icon/compare.png"
+                                            <li><a href="<?php echo e(url('/productdetail?id='.$product->product_id)); ?>"><img src="img/icon/compare.png"
                                                         alt=""> <span>Compare</span></a>
                                             </li>
                                             <li><a href="<?php echo e(asset(url('/productdetail?id=' . $product->product_id))); ?>"><img src="img/icon/search.png" alt=""></a></li>

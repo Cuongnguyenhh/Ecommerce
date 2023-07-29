@@ -143,7 +143,7 @@
                             <li><a href="{{url('/')}}">Categories</a>
                                 <ul class="dropdown">                                  
                                     @foreach($categories as $category)
-                                        <li><a href="{{url('category/'.$category->category_name)}}">{{ $category->category_name }}</a></li>
+                                        <li><a href="{{url('category/'.$category->id)}}">{{ $category->category_name }}</a></li>
                                     @endforeach     
                                 </ul>
                             </li>

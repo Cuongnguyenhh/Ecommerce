@@ -19,7 +19,7 @@ class HomeController extends Controller
         $this->productController = $productController;
         $this->categoryController = $categoryController;
     }
-    public function getViewData(Request $request)
+    public function getViewData(Request $request, $id = null)
     {
         $allProducts = $this->productController->getAllProducts();
         $bestSellerProducts = $this->productController->getBestsellersProducts();
@@ -27,7 +27,12 @@ class HomeController extends Controller
         $hotProducts = $this->productController->getHotProducts();
         $productImages = $this->productController->getProductImages();
         $categories = $this->categoryController->getAllCategories();
-        return compact('newProducts', 'allProducts', 'bestSellerProducts', 'hotProducts', 'productImages','categories');
+        $productDetails = $this->productController->productDetails($request);
+        
+        $productByCate = $this->productController->ProductBycategoryId($id);
+     
+    
+        return compact('newProducts', 'allProducts', 'bestSellerProducts', 'hotProducts', 'productImages','categories','productByCate','productDetails' );
     }
 
     public function index(Request $request)
@@ -39,5 +44,15 @@ class HomeController extends Controller
     {
         $viewData = $this->getViewData($request);
         return view('pages.store', $viewData);
+    }
+    public function productbyCate(Request $request, $id = null)
+    {
+        $viewData = $this->getViewData($request, $id);
+    
+        return view('pages.productListByCate', $viewData);
+    }
+    public function productDetails(Request $request, $id=null){
+      $viewData = $this->getViewData($request, $id);
+      return view('pages.productDetail', $viewData);
     }
 }

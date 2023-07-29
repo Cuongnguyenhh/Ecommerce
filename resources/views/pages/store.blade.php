@@ -206,7 +206,7 @@
                                         <ul class="product__hover">
                                             <li><a href="{{ url('/') }}"><img src="img/icon/heart.png"
                                                         alt=""></a></li>
-                                            <li><a href="{{ url('/') }}"><img src="img/icon/compare.png"
+                                            <li><a href="{{url('/productdetail?id='.$product->product_id)}}"><img src="img/icon/compare.png"
                                                         alt=""> <span>Compare</span></a>
                                             </li>
                                             <li><a href="{{ asset(url('/productdetail?id=' . $product->product_id))}}"><img src="img/icon/search.png" alt=""></a></li>

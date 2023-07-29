@@ -18,6 +18,13 @@ class productController extends Controller
             ->paginate(8);
         return $allProducts;
     }
+
+    public function ProductBycategoryId($id){
+        
+       $productByCate = Product::where('products.visible',0)
+        ->where('category_id', $id)->get();
+        return $productByCate;
+    } 
     public function getBestsellersProducts()
     {
         $bestsellerProducts =  Product::where('visible', 0)
@@ -64,5 +71,13 @@ class productController extends Controller
         $productImages = Images::join('products', 'images.id_product', '=', 'products.product_id')
             ->get();
         return $productImages;
+    }
+
+    public function productDetails(Request $request){
+        $id = $request->id;
+        $product = Product::where('visible', 0)
+        ->where('product_id', $id)
+        ->first();
+        return $product;
     }
 }

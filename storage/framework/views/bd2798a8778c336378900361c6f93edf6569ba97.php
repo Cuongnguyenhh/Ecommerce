@@ -143,7 +143,7 @@
                             <li><a href="<?php echo e(url('/')); ?>">Categories</a>
                                 <ul class="dropdown">                                  
                                     <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <li><a href="<?php echo e(url('category/'.$category->category_name)); ?>"><?php echo e($category->category_name); ?></a></li>
+                                        <li><a href="<?php echo e(url('category/'.$category->id)); ?>"><?php echo e($category->category_name); ?></a></li>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>     
                                 </ul>
                             </li>

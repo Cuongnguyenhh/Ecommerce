@@ -11,23 +11,28 @@ use App\Models\Images;
 
 class productController extends Controller
 {
-    public function getAllProducts()
+    public function getAllProducts($page =8)
     {
-        $allProducts = Product::where('products.visible', 0) // Specify 'products.visible'
+        $allProducts = Product::where('products.product_visible', 0) // Specify 'products.visible'
             ->join('categories', 'products.category_id', '=', 'categories.id')
-            ->paginate(8);
+            ->paginate($page);
         return $allProducts;
     }
 
+    public function getAllProductsAdmin()
+    {
+        $allProducts = Product::join('categories', 'products.category_id', '=', 'categories.id')->get();
+        return $allProducts;
+    }
     public function ProductBycategoryId($id){
         
-       $productByCate = Product::where('products.visible',0)
+       $productByCate = Product::where('products.product_visible',0)
         ->where('category_id', $id)->get();
         return $productByCate;
     } 
     public function getBestsellersProducts()
     {
-        $bestsellerProducts =  Product::where('visible', 0)
+        $bestsellerProducts =  Product::where('product_visible', 0)
             ->orderBy('sold', 'desc')
             ->get();
         return $bestsellerProducts;
@@ -37,7 +42,7 @@ class productController extends Controller
     {
         $sevenDaysAgo = Carbon::now()->subDays(7);
 
-        $products = Product::where('visible', 0)
+        $products = Product::where('product_visible', 0)
             ->whereDate('created_at', '>=', $sevenDaysAgo)
             ->orderBy('created_at', 'desc')
             ->limit('4')
@@ -49,7 +54,7 @@ class productController extends Controller
     {
         $sevenDaysAgo = Carbon::now()->subDays(3);
 
-        $products = Product::where('visible', 0)
+        $products = Product::where('product_visible', 0)
             ->whereDate('created_at', '>=', $sevenDaysAgo)
             ->orderBy('created_at', 'desc')
             ->orderBy('sold', 'desc')
@@ -61,7 +66,7 @@ class productController extends Controller
     public function getProductDetails(Request $request)
     {
         $id = $request->get('id');
-        $productDetails = Product::where('visible', 0)
+        $productDetails = Product::where('product_visible', 0)
             ->where('id', $id)->first();
         return $productDetails;
     }
@@ -74,10 +79,11 @@ class productController extends Controller
     }
 
     public function productDetails(Request $request){
-        $id = $request->id;
-        $product = Product::where('visible', 0)
-        ->where('product_id', $id)
-        ->first();
+        $id = $request->id ? $request->id : 9;
+        $product = Product::where('product_visible', 0)
+            ->where('product_id', $id)
+            ->first();
+        
         return $product;
     }
 }

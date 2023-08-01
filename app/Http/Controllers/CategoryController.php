@@ -14,4 +14,8 @@ class CategoryController extends Controller
             ->get();
         return $categories;
     }
+
+
+    
 }
+

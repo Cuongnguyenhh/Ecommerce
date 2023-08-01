@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AdminProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -26,29 +27,21 @@ Route::get('/productdetail', [HomeController::class, 'productDetails']);
 Route::get('/shopingcart', [CartController::class, 'shopingcart'])->name('shopingcart');
 
 
-
 Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
-
-
-
-
-
-Route::get('/testproducts',[CategoryController::class,'getAllCategories']);
-
-
+Route::get('checkout', [ProductController::class, 'productDetails']);
 
 Route::get('/dashboard', function () {
     return view('dashboard_pages.home');
 })->middleware(['checkadmin'])->name('dashboard');
 
-
-Route::middleware('checkadmin')->group(function () {
-    Route::get('/dashboard/products', function () {
-        return view('dashboard_pages.products');
-    });
+Route::prefix('/dashboard')->middleware('checkadmin')->group(function () {
+    Route::resource('products', 'App\Http\Controllers\Backend\AdminProductController');
+    Route::put('products/{id}', [AdminProductController::class, 'update'])->name('products.update');
 });
+
+
 
 
 require __DIR__ . '/auth.php';

@@ -1,4 +1,6 @@
 <?php $__env->startSection('dashboard_content'); ?>
+<img src="<?php echo e(asset('img/lsavjJCbG02LzrVaf0gDekubg5KcpCGlRbsaaen0.jpg')); ?>" class="avatar avatar-sm me-3" alt="user1">
+
 <div class="container-fluid py-4">
   <div class="row">
     <div class="col-12">
@@ -27,7 +29,8 @@
                 <?php $__currentLoopData = $productImage; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $img): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <?php
                 if($img->id_product == $product->product_id){
-                  $img->link = $imgProduct;
+                  $imgProduct = $img->link;
+                   break;
                 }
                 ?>
 
@@ -36,7 +39,7 @@
                   <td>
                     <div class="d-flex px-2 py-1">
                       <div>
-                        <img src="./assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
+                        <img src="<?php echo e(asset('../../storage/public/'.$imgProduct)); ?>" class="avatar avatar-sm me-3" alt="user1">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="mb-0 text-sm"><?php echo e($product->product_name); ?></h6>

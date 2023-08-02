@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\CategoryController;
 use App\Models\Product;
+use Illuminate\Foundation\Http\FormRequest;
 
 use App\Models\Images;
 
@@ -98,41 +99,74 @@ class AdminProductController extends Controller
 
 
 
-     public function update(Request $request, $id)
-     {
-         $product = Product::where('product_id', $id)->first();
-         if (!$product) {
-             abort(404);
-         }
-     
-         try {
-             $request->validate([
-                 'product_name' => 'required|string|max:255',
-                 'price' => 'required|numeric|min:0',
-                 'product_visible' => 'required|boolean',
-                 'category_id' => 'required|integer',
-                 'description' => 'required|max:255',
-             ]);
-     
-             $product->update([
-                 'product_name' => $request->input('product_name'),
-                 'price' => $request->input('price'),
-                 'product_visible' => $request->input('product_visible'),
-                 'category_id' => $request->input('category_id'),
-                 'description' => $request->input('description'),
-                 'sold' => 0,
-             ]);
-                dd($request->input());            
-             
+    public function update(Request $request, $id)
+    {
+        $product = Product::where('product_id', $id)->first();
+        if (!$product) {
+            abort(404);
+        }
+
+        try {
+            $request->validate([
+                'product_name' => 'required|string|max:255',
+                'price' => 'required|numeric|min:0',
+                'product_visible' => 'required|boolean',
+                'category_id' => 'required|integer',
+                'description' => 'required|max:255',
+            ]);
+
+            // $product = [
+            //     'product_name' => $request->input('product_name'),
+            //     'price' => $request->input('price'),
+            //     'product_visible' => $request->input('product_visible'),
+            //     'category_id' => $request->input('category_id'),
+            //     'description' => $request->input('description'),
+            //     'sold' => 0,
+            // ];
+
+
+
+            // $product->product_name = $request->input('product_name');
+            // $product->price = $request->input('price');
+            // $product->product_visible = $request->input('product_visible');
+            // $product->category_id = $request->input('category_id');
+            // $product->description = $request->input('description');
+            // $product->sold = 0;
+            // $product->save();
+            // $checkimg = Images::where('id_product', $id)->get();
+            if ($request->hasFile('product_images')) {
+
+
+                $images = $request->file('product_images');
+
+                foreach ($images as $image) {
+
+                   
+
+                    Images::where('id_product', $id)->delete();
+                }
+
+                foreach ($images as $image) {
+
+                    $path = $image->store('frontend/img', 'public');
+                    echo $path . '<br>' . $id;
+                    Images::create([
+                        'id_product' => $id,
+                        'link' => $path, // Save the image file path, not the image data itself
+                    ]);
+                }
+            }
+
+            // return redirect()->back();
+
             //  return redirect()->route('products.index')->withMessage('The product has been updated successfully');
-         } catch (\Exception $e) {
-             \Log::error($e);
-             return redirect()->back()->withErrors("Failed to update");
-         }
- 
-     }
-     
-     
+        } catch (\Exception $e) {
+            \Log::error($e);
+            return redirect()->back();
+        }
+    }
+
+
 
 
     /**

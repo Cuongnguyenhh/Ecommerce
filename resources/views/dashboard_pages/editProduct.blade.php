@@ -18,7 +18,7 @@
                     <h6>Edit Product</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
-                    <form action="{{ route('products.update', ['id' =>$product->product_id]) }}" method="POST">
+                    <form action="{{ route('products.update', $product->product_id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -57,6 +57,10 @@
                             <input type="text" id="description" name="description" class="form-control" value="{{ $product->description }}" required>
                         </div>
                         
+                        <div class="form-group">
+                            <label for="product_images">Product Images (Max 3 images)</label>
+                            <input type="file" id="product_images" name="product_images[]" class="form-control-file" multiple accept="image/*">
+                        </div>
 
                         {{-- <div class="form-group">
                             <label for="product_images">Product Images (Max 3 images)</label>

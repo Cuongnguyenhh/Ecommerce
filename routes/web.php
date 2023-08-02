@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
+use App\Models\Images;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use App\Http\Controllers\CartController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
@@ -38,7 +40,6 @@ Route::get('/dashboard', function () {
 
 Route::prefix('/dashboard')->middleware('checkadmin')->group(function () {
     Route::resource('products', 'App\Http\Controllers\Backend\AdminProductController');
-    Route::put('products/{id}', [AdminProductController::class, 'update'])->name('products.update');
 });
 
 

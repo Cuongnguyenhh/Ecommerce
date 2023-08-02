@@ -17,7 +17,7 @@
                     <h6>Edit Product</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
-                    <form action="<?php echo e(route('products.update', ['id' =>$product->product_id])); ?>" method="POST">
+                    <form action="<?php echo e(route('products.update', $product->product_id)); ?>" method="POST" enctype="multipart/form-data">
                         <?php echo csrf_field(); ?>
                         <?php echo method_field('PUT'); ?>
 
@@ -56,6 +56,10 @@
                             <input type="text" id="description" name="description" class="form-control" value="<?php echo e($product->description); ?>" required>
                         </div>
                         
+                        <div class="form-group">
+                            <label for="product_images">Product Images (Max 3 images)</label>
+                            <input type="file" id="product_images" name="product_images[]" class="form-control-file" multiple accept="image/*">
+                        </div>
 
                         
        

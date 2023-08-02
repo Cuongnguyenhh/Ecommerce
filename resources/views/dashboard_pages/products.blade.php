@@ -7,7 +7,10 @@
         <div class="card-header pb-0">
           <h6>Authors table</h6>
         </div>
+        
         <div class="form-group">
+          <button class="btn btn-success" type="submit" style="margin-left: 10px; margin-right: 10px; float: right;"><a style="color: white;" href="{{ route('products.create') }}">Add new product</a></button>
+
           <input type="text" id="searchInput" style="width: 400px; float: right;border: 1px solid black" class="form-control" placeholder="Search by author name or category">
         </div>
         <div class="card-body px-0 pt-0 pb-2">
@@ -72,7 +75,7 @@
 
               </tbody>
             </table>
-            {{$count}}
+      
           </div>
         </div>
       </div>

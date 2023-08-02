@@ -45,7 +45,8 @@ class AdminProductController extends Controller
      */
     public function create()
     {
-        //
+        $cate = $this->categoryController->getAllCategories();
+        return view('dashboard_pages.createProduct', compact('cate'));
     }
 
     /**
@@ -56,7 +57,48 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        try {
+            $request->validate([
+                'product_name' => 'required|string|max:255',
+                'price' => 'required|numeric|min:0',
+                'product_visible' => 'required|boolean',
+                'category_id' => 'required|integer',
+                'description' => 'required|max:255',
+            ]);
+
+            $product =  Product::create([
+                'product_name' => $request->input('product_name'),
+                'price' => $request->input('price'),
+                'product_visible' => $request->input('product_visible'),
+                'category_id' => $request->input('category_id'),
+                'description' => $request->input('description'),
+                'sold' => 0,
+
+            ]);
+            $id = $product->product_id;
+
+
+            if ($request->hasFile('product_images')) {
+                $images = $request->file('product_images');
+                foreach ($images as $image) {
+                    Images::where('id_product', $id)->delete();
+                }
+                foreach ($images as $image) {
+
+                    $path = $image->move('frontend/img/product', $image->getClientOriginalName());
+                    Images::create([
+                        'id_product' => $id,
+                        'link' => $image->getClientOriginalName(), // Save the image file path, not the image data itself
+                    ]);
+                }
+            }
+            return redirect()->route('products.index')->withMessage('The product has been updated successfully');
+        } catch (\Exception $e) {
+            \Log::error($e);
+            echo 'oh no, something went wrong';
+            // return redirect()->back();
+        }
     }
 
     /**

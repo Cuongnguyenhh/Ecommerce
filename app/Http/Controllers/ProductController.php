@@ -13,6 +13,7 @@ class productController extends Controller
 {
     public function getAllProducts($page =8)
     {
+        
         $allProducts = Product::where('products.product_visible', 0) // Specify 'products.visible'
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->paginate($page);

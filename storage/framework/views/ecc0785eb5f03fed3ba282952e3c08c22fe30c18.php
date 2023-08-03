@@ -80,7 +80,7 @@
                         <ul>
                             <li>Total <span>$ <?php echo e($total); ?></span></li>
                         </ul>
-                        <a href="#" class="primary-btn">Proceed to checkout</a>
+                        <a href="<?php echo e(route('checkout.index')); ?>" class="primary-btn">Proceed to checkout</a>
                     </div>
                 </div>
             </div>

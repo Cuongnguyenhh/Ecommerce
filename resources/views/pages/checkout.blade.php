@@ -82,20 +82,15 @@
                                 <ul class="checkout__total__all">
                                     <li>Total <span>{{ $total }}<span></li>
                                 </ul>
-                                <div class="checkout__input__checkbox">
-                                    <label for="paypal">
-                                        VN Pay
-                                        <input name="payment" value="1" type="checkbox" id="paypal">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <p style="font-family: monospace; font-size: 12px;">(IF YOU DONT CHOICE YOUR PAYMENT WAY
-                                        WE WAS GET COD FOR YOU )</p>
-                                </div>
 
-                                <button type="submit" class="site-btn">PLACE ORDER</button>
+                                <button name="redirect " type="submit" class="site-btn">PLACE ORDER</button>
                             </div>
                         </div>
                     </div>
+                </form>
+                <form style="float: right;" action="{{ route('vnpay.load') }}" method="post">
+                    @csrf
+                    <button style="width: 360px;" name="redirect" class="btn btn-primary" type="submit">VnPay</button>
                 </form>
                 @if ($errors->any())
                     <div class="alert alert-danger">

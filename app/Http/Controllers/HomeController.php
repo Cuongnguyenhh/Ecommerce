@@ -55,4 +55,9 @@ class HomeController extends Controller
       $viewData = $this->getViewData($request, $id);
       return view('pages.productDetail', $viewData);
     }
+    public function successpayment(Request $request, $id=null)
+    {
+        $viewData = $this->getViewData($request, $id);
+        return view('pages.sucssespay', $viewData);
+    }
 }

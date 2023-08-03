@@ -14,6 +14,7 @@ class OrderProduct extends Model
     [
         'order_product',
         'order_id',
+        'quantity',
         
     ];
     public function order(){

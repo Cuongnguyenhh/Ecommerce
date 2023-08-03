@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\HomeController;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
-{   
+{
     protected $homeController;
     public function __construct(HomeController $homeController)
     {
@@ -17,12 +20,12 @@ class CheckoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request) 
+    public function index(Request $request)
     {
         $viewData = $this->homeController->getViewData($request);
-       
+
         $cart = session('cart');
-    // dd($cart);
+        // dd($cart);
         return view('pages.checkout', array_merge(compact('cart'), $viewData));
     }
 
@@ -44,6 +47,8 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
+        $viewData = $this->homeController->getViewData($request);
+        $payment = 0;
         $cart = session('cart');
         $validated = $request->validate([
             'name' => 'required|max:255',
@@ -51,9 +56,29 @@ class CheckoutController extends Controller
             'addr'  => 'required|max:255',
             'email' => 'required|email',
         ]);
+        $payment = $request->input('payment');
+        try {
+            $order = Order::create([
+                'user_name' => $request->input('name'),
+                'user_phone' => $request->input('phone'),
+                'user_email' => $request->input('email'),
+                'user_address' => $request->input('addr'),
 
-        dd($request->all());
-    
+
+            ]);
+            $id_order = $order->id;
+
+            foreach ($cart as $cart) {
+                OrderProduct::create([
+                    'order_product' => $cart['product_id'],
+                    'order_id' => $id_order,
+                    'quantity' => $cart['quantity'],
+                ]);
+            }
+        } catch (\Exception $e) {
+            \Log::error($e);
+            echo 'oh no, something went wrong';
+        }
     }
 
     /**

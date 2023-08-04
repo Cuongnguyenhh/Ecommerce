@@ -80,9 +80,9 @@ class productController extends Controller
     }
 
     public function productDetails(Request $request){
-        $id = $request->id ? $request->id : 9;
+        $id_pro = $request->id_pro ? $request->id_pro : 9;
         $product = Product::where('product_visible', 0)
-            ->where('product_id', $id)
+            ->where('product_id', $id_pro)
             ->first();
         
         return $product;

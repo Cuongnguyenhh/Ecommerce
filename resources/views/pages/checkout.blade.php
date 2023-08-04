@@ -83,7 +83,7 @@
                                     <li>Total <span>{{ $total }}<span></li>
                                 </ul>
 
-                                <button name="redirect " type="submit" class="site-btn">PLACE ORDER</button>
+                                <button  type="submit" class="site-btn">PLACE ORDER</button>
                             </div>
                         </div>
                     </div>

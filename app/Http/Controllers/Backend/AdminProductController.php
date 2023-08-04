@@ -124,7 +124,7 @@ class AdminProductController extends Controller
         $product = Product::where('product_id', $id)->first();
         $cate = $this->categoryController->getAllCategories();
         if (!$product) {
-            abort(404); // Hiển thị trang 404 nếu sản phẩm không tồn tại
+            return view('pages.404');// Hiển thị trang 404 nếu sản phẩm không tồn tại
         }
 
         // Pass thông tin sản phẩm sang view để hiển thị form chỉnh sửa

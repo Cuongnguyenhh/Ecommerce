@@ -48,7 +48,6 @@ class CheckoutController extends Controller
     public function store(Request $request)
     {
         $viewData = $this->homeController->getViewData($request);
-        $payment = 0;
         $cart = session('cart');
         $validated = $request->validate([
             'name' => 'required|max:255',
@@ -56,13 +55,13 @@ class CheckoutController extends Controller
             'addr'  => 'required|max:255',
             'email' => 'required|email',
         ]);
-        $payment = $request->input('payment');
         try {
             $order = Order::create([
                 'user_name' => $request->input('name'),
                 'user_phone' => $request->input('phone'),
                 'user_email' => $request->input('email'),
                 'user_address' => $request->input('addr'),
+                'status' => 0,
 
 
             ]);
@@ -75,6 +74,7 @@ class CheckoutController extends Controller
                     'quantity' => $cart['quantity'],
                 ]);
             }
+            return view('pages.sucssesorder');
         } catch (\Exception $e) {
             \Log::error($e);
             echo 'oh no, something went wrong';

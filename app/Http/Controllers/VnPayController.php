@@ -24,7 +24,7 @@ class VnPayController extends Controller
         $vnp_HashSecret = "RCLNPGBUWPTQJPTPSHVYSJWLYBSVJLSD"; //Chuỗi bí mật
 
         $vnp_TxnRef = rand(1,99999).'bill'; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-        $vnp_OrderInfo = 'test payment';
+        $vnp_OrderInfo = 'Pay for bill';
         $vnp_OrderType = 'billpayment';
         $vnp_Amount =  $total*2100000;
         $vnp_Locale = 'vn';
@@ -117,6 +117,7 @@ class VnPayController extends Controller
                 'user_phone' => $user->phone,
                 'user_email' => $user->email,
                 'user_address' => $user->user_adress,
+                'status' => 1,
 
 
             ]);

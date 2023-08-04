@@ -28,11 +28,11 @@ class HomeController extends Controller
         $productImages = $this->productController->getProductImages();
         $categories = $this->categoryController->getAllCategories();
         $productDetails = $this->productController->productDetails($request);
-        
+
         $productByCate = $this->productController->ProductBycategoryId($id);
-     
-    
-        return compact('newProducts', 'allProducts', 'bestSellerProducts', 'hotProducts', 'productImages','categories','productByCate','productDetails' );
+
+
+        return compact('newProducts', 'allProducts', 'bestSellerProducts', 'hotProducts', 'productImages', 'categories', 'productByCate', 'productDetails');
     }
 
     public function index(Request $request)
@@ -48,14 +48,22 @@ class HomeController extends Controller
     public function productbyCate(Request $request, $id = null)
     {
         $viewData = $this->getViewData($request, $id);
-    
+        $productByCate = $viewData['productByCate'];
+
+        if ($productByCate->all() == null) {
+            return view('pages.404');
+        }
         return view('pages.productListByCate', $viewData);
     }
-    public function productDetails(Request $request, $id=null){
-      $viewData = $this->getViewData($request, $id);
-      return view('pages.productDetail', $viewData);
+    public function productDetails(Request $request, $id = null)
+    {
+        $viewData = $this->getViewData($request, $id);
+        if ($viewData['productDetails'] == null) {
+            return view('pages.404');
+        }
+        return view('pages.productDetail', $viewData);
     }
-    public function successpayment(Request $request, $id=null)
+    public function successpayment(Request $request, $id = null)
     {
         $viewData = $this->getViewData($request, $id);
         return view('pages.sucssespay', $viewData);

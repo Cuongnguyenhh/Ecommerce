@@ -18,6 +18,4 @@ require __DIR__.'/cart.php';
 require __DIR__.'/home.php';
 require __DIR__ .'/auth.php';
 
-Route::fallback(function () {
-    return view('pages.404');
-});
+

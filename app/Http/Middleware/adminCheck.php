@@ -22,7 +22,7 @@ class adminCheck
         return $next($request);
         }else 
         {
-            return redirect ('/');
+            return redirect('/accessdenied');
         }
     }
 }

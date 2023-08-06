@@ -32,7 +32,8 @@ class HomeController extends Controller
         $productByCate = $this->productController->ProductBycategoryId($id);
 
 
-        return compact('newProducts', 'allProducts', 'bestSellerProducts', 'hotProducts', 'productImages', 'categories', 'productByCate', 'productDetails');
+        return compact('newProducts', 'allProducts', 'bestSellerProducts', 'hotProducts',
+         'productImages', 'categories', 'productByCate', 'productDetails');
     }
 
     public function index(Request $request)

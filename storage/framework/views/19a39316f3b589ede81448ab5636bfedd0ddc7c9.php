@@ -1,5 +1,4 @@
-@extends('dashboard')
-@section('dashboard_content')
+<?php $__env->startSection('dashboard_content'); ?>
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -35,55 +34,50 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($order as $order)
+                                    <?php $__currentLoopData = $order; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <tr>
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{ $order->user_name }}</h6>
+                                                        <h6 class="mb-0 text-sm"><?php echo e($order->user_name); ?></h6>
 
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="text-xs font-weight-bold mb-0">{{ $order->user_phone }}</p>
+                                                <p class="text-xs font-weight-bold mb-0"><?php echo e($order->user_phone); ?></p>
 
                                             </td>
-                                            @if ( $order->status == 0)
+                                            <?php if( $order->status == 0): ?>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="badge badge-sm bg-gradient-info">Prosessing</span>
                                             </td>
-                                            @else
+                                            <?php else: ?>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="badge badge-sm bg-gradient-success">Done</span>
                                             </td>
-                                            @endif
+                                            <?php endif; ?>
 
                                           
                                             <td class="align-middle text-center">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $order->user_address }}</span>
+                                                    class="text-secondary text-xs font-weight-bold"><?php echo e($order->user_address); ?></span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $order->user_email }}</span>
+                                                    class="text-secondary text-xs font-weight-bold"><?php echo e($order->user_email); ?></span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $order->created_at }}</span>
+                                                    class="text-secondary text-xs font-weight-bold"><?php echo e($order->created_at); ?></span>
                                             </td>
-                                            {{-- <td>
-                                                <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal{{ $order->id }}">
-                                                    See Detail
-                                                </button>
-                                            </td> --}}
+                                            
 
                                             <td>
-                                                <a href="{{ route('order.show', $order->id) }}">Detail</a>
+                                                <a href="<?php echo e(route('order.show', $order->id)); ?>">Detail</a>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="{{ route('order.edit', $order->id) }}"
+                                                <a href="<?php echo e(route('order.edit', $order->id)); ?>"
                                                     class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
                                                     data-original-title="Edit user">
                                                     Complete comfirm
@@ -91,9 +85,9 @@
                                             </td>
                                         </tr>
 
-                                        {{-- Model detail --}}
+                                        
 
-                                        <div class="modal fade" id="exampleModal{{ $order->id }}" tabindex="-1"
+                                        <div class="modal fade" id="exampleModal<?php echo e($order->id); ?>" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -113,7 +107,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
                             </table>
                         </div>
@@ -124,4 +118,6 @@
     </div>
 
     <!-- JavaScript to handle search functionality -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/Economerce/resources/views/dashboard_pages/order.blade.php ENDPATH**/ ?>

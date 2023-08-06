@@ -24,18 +24,25 @@ class AdminProductController extends Controller
     {
         $product = $this->productController->getAllProductsAdmin();
         $productImage = $this->productController->getProductimages();
+        $cate = $this->categoryController->getAllCategories();
         // $productDetail = $this->productController->getProductDetails($request);
-        return compact('product', 'productImage');
+        return compact('product', 'productImage','cate');
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function testjsonResponse(Request $request)
+    {
+        $viewData = $this->GetviewData($request);
+        return response()->json($viewData);
+    }
     public function index(Request $request)
     {
         $viewData = $this->GetviewData($request);
         return view('dashboard_pages.products', $viewData);
+    
     }
 
     /**

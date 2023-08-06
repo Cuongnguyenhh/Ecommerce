@@ -10,12 +10,15 @@
 |
 */
 
-use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\Backend\AdminProductController;
+// use Illuminate\Support\Facades\Route;
+// Route::get('/testjson', [AdminProductController::class, 'testjsonResponse']);
 
+
+require __DIR__.'/home.php';
 require __DIR__.'/checkout.php';
 require __DIR__.'/admin.php';
 require __DIR__.'/cart.php';
-require __DIR__.'/home.php';
 require __DIR__ .'/auth.php';
 
 

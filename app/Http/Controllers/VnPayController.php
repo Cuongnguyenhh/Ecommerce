@@ -117,7 +117,7 @@ class VnPayController extends Controller
                 'user_phone' => $user->phone,
                 'user_email' => $user->email,
                 'user_address' => $user->user_adress,
-                'status' => 1,
+                'status' =>  '1',
 
 
             ]);

@@ -4,11 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
 Route::get('/dashboard', function () {
     return view('dashboard_pages.home');
 })->middleware(['checkadmin'])->name('dashboard');
 
 Route::prefix('/dashboard')->middleware('checkadmin')->group(function () {
     Route::resource('products', 'App\Http\Controllers\Backend\AdminProductController');
+    Route::resource('order', 'App\Http\Controllers\Backend\OrderController');
 });

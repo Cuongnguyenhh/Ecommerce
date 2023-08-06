@@ -11,9 +11,9 @@ use App\Models\Images;
 
 class productController extends Controller
 {
-    public function getAllProducts($page =8)
+    public function getAllProducts($page = 8)
     {
-        
+
         $allProducts = Product::where('products.product_visible', 0) // Specify 'products.visible'
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->paginate($page);
@@ -25,12 +25,13 @@ class productController extends Controller
         $allProducts = Product::join('categories', 'products.category_id', '=', 'categories.id')->get();
         return $allProducts;
     }
-    public function ProductBycategoryId($id){
-        
-       $productByCate = Product::where('products.product_visible',0)
-        ->where('category_id', $id)->get();
+    public function ProductBycategoryId($id)
+    {
+
+        $productByCate = Product::where('products.product_visible', 0)
+            ->where('category_id', $id)->get();
         return $productByCate;
-    } 
+    }
     public function getBestsellersProducts()
     {
         $bestsellerProducts =  Product::where('product_visible', 0)
@@ -79,12 +80,13 @@ class productController extends Controller
         return $productImages;
     }
 
-    public function productDetails(Request $request){
+    public function productDetails(Request $request)
+    {
         $id_pro = $request->id_pro ? $request->id_pro : 9;
         $product = Product::where('product_visible', 0)
             ->where('product_id', $id_pro)
             ->first();
-        
+
         return $product;
     }
 }

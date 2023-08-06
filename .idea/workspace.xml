@@ -5,9 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e529bb99-e6c1-43bc-8f21-d7df67c376b4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/AdminProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/AdminProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VnPayController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VnPayController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/adminCheck.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/adminCheck.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/cache/routes-v7.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/routes-v7.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard_pages/a.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard_pages/editProduct.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard_pages/order.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard_pages/order.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard_pages/products.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard_pages/products.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/access_denied.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/access_denied.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/home.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/rGtNRlEK2HiQREESKVYU8mhV9lm8apSa6uKjDeeV" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/sessions/rGtNRlEK2HiQREESKVYU8mhV9lm8apSa6uKjDeeV" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/JvM0mFpUlFxaAMePAK6mYLYCkBU0QTLTbx0qPWBW" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/12cbe1066442a915be00ba7b84eab3dff1abfce0.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/12cbe1066442a915be00ba7b84eab3dff1abfce0.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/7d57993077bc562cf2764976e99205b75473c708.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/7d57993077bc562cf2764976e99205b75473c708.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/fb5c0417f97c8fee3dcc8b97d26499caa9a59132.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/fb5c0417f97c8fee3dcc8b97d26499caa9a59132.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -175,6 +192,8 @@
       <workItem from="1691068439259" duration="508000" />
       <workItem from="1691068959747" duration="1723000" />
       <workItem from="1691075731860" duration="677000" />
+      <workItem from="1691161456878" duration="39000" />
+      <workItem from="1691234966248" duration="29000" />
     </task>
     <servers />
   </component>

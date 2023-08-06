@@ -103,12 +103,24 @@ a.avatar img {
     </style>
 </head>
 <h1>403</h1>
+
 <div><p>> <span>ERROR CODE</span>: "<i>HTTP 403 Forbidden</i>"</p>
-<p>> <span>SOME PAGES ON THIS SERVER THAT YOU DO HAVE PERMISSION TO ACCESS</span>: [<a href="/">Home Page</a>, <a href="{{asset('/shop')}}">Shop</a>,]</p><p>> <span> Login With admin role after you log out  </span></p>
+<p>> <span>SOME PAGES ON THIS SERVER THAT YOU DO HAVE PERMISSION TO ACCESS</span>: [<a href="/">Home Page</a>, <a href="{{asset('/shop')}}">Shop</a>,]</p><p>> <span>Can you choose one way to continute</span></p>
+
+@if (Auth::user() == null)
 <p><form action="{{ url('/logout') }}" method="post">
     @csrf
-    <button class="btn btn-secondary" type="submit" style="margin-top: 12px; ">Log Out</button>
+    <button class="btn btn-info" type="submit" style="margin-top: 12px; ">Log in to try again</button>
 </form></p>
+@else
+<p><form action="{{ url('/logout') }}" method="post">
+    @csrf
+    <button class="btn btn-info" type="submit" style="margin-top: 12px; ">Log Out and try orther account</button>
+</form></p>
+@endif
+
+
+
 </div>
 
 <a class="avatar" href="https://codepen.io/leenalavanya/" title="If you liked this pen, don't forget to heart, share and follow ❤"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/157344/profile/profile-512.jpg?1535437978"/></a>

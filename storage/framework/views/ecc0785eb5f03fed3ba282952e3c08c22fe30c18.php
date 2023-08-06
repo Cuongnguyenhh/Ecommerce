@@ -17,44 +17,46 @@
                             </thead>
                             <tbody>
                                 <?php $imgProduct = null; $total = 0; ?>
+                                <?php if($cart): ?>
                                 <?php $__currentLoopData = $cart; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $productId => $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php $__currentLoopData = $productImages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $img): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php 
-                                    if($img->id_product == $product['product_id']){
-                                        $imgProduct = $img->link;
-                                            break;
-                                    }
-                                    ?>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    <tr>
-                                        <td class="product__cart__item">
-                                            <div class="product__cart__item__pic">
-                                                <img style="width: 90px; height: 90px;" src="img/product/<?php echo e($imgProduct); ?>" alt="">
-                                            </div>
-                                            <div class="product__cart__item__text">
-                                                <h6><?php echo e($product['name']); ?></h6>
-                                                <h5>$<?php echo e($product['price']); ?></h5>
-                                            </div>
-                                        </td>
-                                        <td class="quantity__item">
-                                            <div class="quantity">
-                                                <span><?php echo e($product['quantity']); ?></span>
-                                            </div>
-                                        </td>
-                                        <td class="cart__price"><?php echo e($product['quantity'] * $product['price']); ?></td>
-                                        <td class="cart__close">
-                                                <form action="<?php echo e(route('cart.remove', ['id' => $productId])); ?>"
-                                                    method="POST">
-                                                    <?php echo csrf_field(); ?>
-                                                    <button class="btn btn-primary w-10 h-10" type="submit">Remove</button>
-                                                </form>
-                                        </i></td>
-                                    </tr>
-                                    <?php 
-                                        $total += $product['quantity'] * $product['price'];
-                                        
-                                     ?>
+                                <?php $__currentLoopData = $productImages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $img): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php 
+                                if($img->id_product == $product['product_id']){
+                                    $imgProduct = $img->link;
+                                        break;
+                                }
+                                ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img style="width: 90px; height: 90px;" src="img/product/<?php echo e($imgProduct); ?>" alt="">
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <h6><?php echo e($product['name']); ?></h6>
+                                            <h5>$<?php echo e($product['price']); ?></h5>
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <span><?php echo e($product['quantity']); ?></span>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price"><?php echo e($product['quantity'] * $product['price']); ?></td>
+                                    <td class="cart__close">
+                                            <form action="<?php echo e(route('cart.remove', ['id' => $productId])); ?>"
+                                                method="POST">
+                                                <?php echo csrf_field(); ?>
+                                                <button class="btn btn-primary w-10 h-10" type="submit">Remove</button>
+                                            </form>
+                                    </i></td>
+                                </tr>
+                                <?php 
+                                    $total += $product['quantity'] * $product['price'];
+                                    
+                                 ?>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>

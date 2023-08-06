@@ -15,6 +15,7 @@ class Order extends Model
         'user_phone',
         'user_email',
         'user_address',
+        'status',
     ];
 
     public function order_products() 

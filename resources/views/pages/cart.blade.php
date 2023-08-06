@@ -17,44 +17,46 @@
                             </thead>
                             <tbody>
                                 @php $imgProduct = null; $total = 0; @endphp
+                                @if ($cart)
                                 @foreach ($cart as $productId => $product)
-                                    @foreach ($productImages as $img )
-                                    @php 
-                                    if($img->id_product == $product['product_id']){
-                                        $imgProduct = $img->link;
-                                            break;
-                                    }
-                                    @endphp
-                                    @endforeach
-                                    <tr>
-                                        <td class="product__cart__item">
-                                            <div class="product__cart__item__pic">
-                                                <img style="width: 90px; height: 90px;" src="img/product/{{$imgProduct}}" alt="">
-                                            </div>
-                                            <div class="product__cart__item__text">
-                                                <h6>{{ $product['name'] }}</h6>
-                                                <h5>${{ $product['price'] }}</h5>
-                                            </div>
-                                        </td>
-                                        <td class="quantity__item">
-                                            <div class="quantity">
-                                                <span>{{ $product['quantity'] }}</span>
-                                            </div>
-                                        </td>
-                                        <td class="cart__price">{{$product['quantity'] * $product['price']}}</td>
-                                        <td class="cart__close">
-                                                <form action="{{ route('cart.remove', ['id' => $productId]) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    <button class="btn btn-primary w-10 h-10" type="submit">Remove</button>
-                                                </form>
-                                        </i></td>
-                                    </tr>
-                                    @php 
-                                        $total += $product['quantity'] * $product['price'];
-                                        
-                                     @endphp
+                                @foreach ($productImages as $img )
+                                @php 
+                                if($img->id_product == $product['product_id']){
+                                    $imgProduct = $img->link;
+                                        break;
+                                }
+                                @endphp
                                 @endforeach
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img style="width: 90px; height: 90px;" src="img/product/{{$imgProduct}}" alt="">
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <h6>{{ $product['name'] }}</h6>
+                                            <h5>${{ $product['price'] }}</h5>
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <span>{{ $product['quantity'] }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">{{$product['quantity'] * $product['price']}}</td>
+                                    <td class="cart__close">
+                                            <form action="{{ route('cart.remove', ['id' => $productId]) }}"
+                                                method="POST">
+                                                @csrf
+                                                <button class="btn btn-primary w-10 h-10" type="submit">Remove</button>
+                                            </form>
+                                    </i></td>
+                                </tr>
+                                @php 
+                                    $total += $product['quantity'] * $product['price'];
+                                    
+                                 @endphp
+                            @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

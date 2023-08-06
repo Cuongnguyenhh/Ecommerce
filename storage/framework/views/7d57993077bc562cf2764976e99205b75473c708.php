@@ -16,6 +16,7 @@
 <html lang="en">
 
 <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
@@ -37,6 +38,7 @@
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   <div class="min-height-300 bg-primary position-absolute w-100"></div>
   <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div class="sidenav-header">
@@ -66,7 +68,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="<?php echo e(url('/dashboard/products')); ?>">
+          <a class="nav-link " href="<?php echo e(url('/dashboard/order')); ?>">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>
